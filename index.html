@@ -1,0 +1,272 @@
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Propose Day, Priyanshu</title>
+    <style>
+        /* Mobile-first CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ffb3ba, #ffdfba, #ffffba); /* Soft pink gradients */
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .section {
+            display: none;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .active {
+            display: block;
+        }
+        h1, h2, h3 {
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        p, .line {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .intro-line {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        button {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef); /* Blush pink */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        button:hover, button:active {
+            transform: scale(0.95);
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .yes-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569); /* Rose pink */
+        }
+        .no-btn {
+            background: linear-gradient(135deg, #ffb3ba, #ffdfba);
+        }
+        .full-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .final {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Section -->
+    <div id="intro" class="section active">
+        <div id="line1" class="intro-line">Priyanshu…</div>
+        <div id="line2" class="intro-line" style="display: none;">Aaj sirf ek din nahi hai 💗</div>
+        <div id="line3" class="intro-line" style="display: none;">Aaj ek faisla poochna hai…</div>
+        <button id="continue-btn" style="display: none; margin-top: 30px;">Tap to continue</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div id="hero" class="section">
+        <h1>Happy Propose Day, Priyanshu 💍</h1>
+        <p>Kuch sawal simple lagte hain,<br>par unke jawaab poori zindagi badal dete hain.</p>
+    </div>
+
+    <!-- Shayari Section 1 -->
+    <div id="shayari1" class="section">
+        <p class="fade-in">
+            Tum meri zindagi me shor ban ke nahi aaye,<br>
+            tum sukoon ban ke aaye.<br><br>
+            Dheere-dheere,<br>
+            bina zor lagaye,<br>
+            tum meri aadat ban gaye.
+        </p>
+    </div>
+
+    <!-- Confession Section -->
+    <div id="confession" class="section">
+        <h2>Sach kehna hai…</h2>
+        <p>
+            Main future ke baare me sochti hoon,<br>
+            toh automatically tumhara naam aata hai.<br><br>
+            Shayad isi ko<br>
+            kisi ka apna hona kehte hain.
+        </p>
+    </div>
+
+    <!-- Shayari Section 2 -->
+    <div id="shayari2" class="section">
+        <div class="line" id="line4" style="display: none;">Tumhara saath easy lagta hai.</div>
+        <div class="line" id="line5" style="display: none;">Tumhari baatein safe lagti hain.</div>
+        <div class="line" id="line6" style="display: none;">Tumhare saath rehna natural lagta hai.</div>
+        <div class="line" id="line7" style="display: none;">Aur tumhare bina… kuch missing.</div>
+    </div>
+
+    <!-- Proposal Section -->
+    <div id="proposal" class="section">
+        <h1>Priyanshu, will you be mine? 💗</h1>
+        <div class="buttons">
+            <button id="yes-btn" class="yes-btn pulse">YES 💕</button>
+            <button id="no-btn" class="no-btn pulse">NO</button>
+        </div>
+    </div>
+
+    <!-- Full-screen Animation for YES -->
+    <div id="yes-animation" class="full-screen" style="display: none;">
+        <div>
+            <h1>You just chose us 💗</h1>
+            <p>And I promise —<br>choosing you every day.</p>
+        </div>
+    </div>
+
+    <!-- Message for NO -->
+    <div id="no-message" class="section" style="display: none;">
+        <h1>Thank you for being honest 💗</h1>
+        <p>That means more than a forced yes.</p>
+    </div>
+
+    <!-- Final Shayari -->
+    <div id="final-shayari" class="section" style="display: none;">
+        <p class="fade-in">
+            Jawab jo bhi ho,<br>
+            ehsaas saccha hona chahiye.<br><br>
+            Aur aaj,<br>
+            wo ehsaas poori imaandari se poocha gaya.
+        </p>
+    </div>
+
+    <!-- Ending -->
+    <div id="ending" class="section final" style="display: none;">
+        <h1>Happy Propose Day, Priyanshu 💗</h1>
+    </div>
+
+    <script>
+        // WhatsApp number - easy to edit
+        const whatsappNumber = "YOUR_WHATSAPP_NUMBER"; // Replace with actual number, e.g., "1234567890"
+
+        // Intro animation
+        setTimeout(() => {
+            document.getElementById('line2').style.display = 'block';
+        }, 1500);
+        setTimeout(() => {
+            document.getElementById('line3').style.display = 'block';
+        }, 3000);
+        setTimeout(() => {
+            document.getElementById('continue-btn').style.display = 'block';
+        }, 4500);
+
+        // Continue to hero
+        document.getElementById('continue-btn').addEventListener('click', () => {
+            document.getElementById('intro').classList.remove('active');
+            document.getElementById('hero').classList.add('active');
+            setTimeout(() => {
+                document.getElementById('hero').classList.remove('active');
+                document.getElementById('shayari1').classList.add('active');
+                setTimeout(() => {
+                    document.getElementById('shayari1').classList.remove('active');
+                    document.getElementById('confession').classList.add('active');
+                    setTimeout(() => {
+                        document.getElementById('confession').classList.remove('active');
+                        document.getElementById('shayari2').classList.add('active');
+                        // Animate shayari2 lines
+                        setTimeout(() => document.getElementById('line4').style.display = 'block', 500);
+                        setTimeout(() => document.getElementById('line5').style.display = 'block', 1500);
+                        setTimeout(() => document.getElementById('line6').style.display = 'block', 2500);
+                        setTimeout(() => document.getElementById('line7').style.display = 'block', 3500);
+                        setTimeout(() => {
+                            document.getElementById('shayari2').classList.remove('active');
+                            document.getElementById('proposal').classList.add('active');
+                        }, 5000);
+                    }, 3000);
+                }, 4000);
+            }, 3000);
+        });
+
+        // Handle YES button
+        document.getElementById('yes-btn').addEventListener('click', () => {
+            localStorage.setItem('choice', 'YES');
+            document.getElementById('proposal').style.display = 'none';
+            document.getElementById('yes-animation').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('yes-animation').style.display = 'none';
+                document.getElementById('final-shayari').classList.add('active');
+                setTimeout(() => {
+                    document.getElementById('final-shayari').classList.remove('active');
+                    document.getElementById('ending').classList.add('active');
+                    // Optional WhatsApp redirect
+                    setTimeout(() => {
+                        window.location.href = `https://wa.me/${whatsappNumber}?text=I%20said%20YES%20💗%20–%20Priyanshu`;
+                    }, 2000);
+                }, 4000);
+            }, 3000);
+        });
+
+        // Handle NO button
+        document.getElementById('no-btn').addEventListener('click', () => {
+            localStorage.setItem('choice', 'NO');
+            document.getElementById('proposal').style.display = 'none';
+            document.getElementById('no-message').classList.add('active');
+            setTimeout(() => {
+                document.getElementById('no-message').classList.remove('active');
+                document.getElementById('final-shayari').classList.add('active');
+                setTimeout(() => {
+                    document.getElementById('final-shayari').classList.remove('active');
+                    document.getElementById('ending').classList.add('active');
+                    // Optional WhatsApp redirect
+                    setTimeout(() => {
+                        window.location.href = `https://wa.me/${whatsappNumber}?text=I%20chose%20NO%20–%20Priyanshu`;
+                    }, 2000);
+                }, 4000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
+```
